@@ -1,32 +1,30 @@
 # coding: utf-8
 def getNext(password):
-        """
-        Série de tests exprimés en doctest
-        >>> getNext('b')
-        'c'
-        >>> getNext('bz')
-        'cb'
-        >>> getNext('cd')
-        'ce'
-        """
 
-        pwd = list(password) #1
-        found = False
-        i=len(pwd)-1
+    pwd = list(password) #1 récupération du mot de passe et transformation en list de charactères pour les analyser
+    found = False
+    lengthPassword=len(pwd)
+    print("Longueur du mot de passe {}".format(lengthPassword))
 
-        while not found:
-        if pwd[i] < 'z': 
-        5
-        pwd[i] = chr(ord(pwd[i])+1) #2
-        found = True
+    while not found:
+        if lengthPassword > 1:
+            for i in range(lengthPassword-1, 0, -1):
+                print("Index {}".format(i))
+                if pwd[i] < 'z': 
+                    pwd[i] = chr(ord(pwd[i])+1) #2 remplacement du charactèretrouvé par le charactère suivant dans l'alphabet (+1)
+                if i == 0:
+                    found = True
         else:
-        i = i-1
+            if pwd[lengthPassword-1] < 'z': 
+                pwd[lengthPassword-1] = chr(ord(pwd[lengthPassword-1])+1) #2 remplacement du charactère z trouvé par le charactère suivant dans l'alphabet (+1) -> a
+                found = True
+            else:
+                found = True
 
-        return ''.join(pwd) #3
+    return ''.join(pwd) #3 retour du mot de passe transformé
 
-        # A l’aide de cette partie du code, si vous exécutez ce fichier, les tests doctests seront exécutés en même temps.
-        # Pour stopper l’exécution des tests, commentez les deux lignes ci-dessous.
-        # Pour lancer manuellement les tests, commentez aussi les lignes, et utilisez "python -m doctest pass.py" au clavier.
-        if __name__ == "__main__":
-        import doctest
-        doctest.testmod()
+    
+# TESTS
+print(getNext('b'))
+print(getNext('bz'))
+print(getNext('cd'))
